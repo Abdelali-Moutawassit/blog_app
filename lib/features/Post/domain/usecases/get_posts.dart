@@ -1,13 +1,14 @@
+import 'package:blog_app/features/Post/domain/repositories/post_repository.dart';
 import 'package:dartz/dartz.dart';
 import 'package:blog_app/core/errors/failure.dart';
 import 'package:blog_app/features/Post/domain/entities/post_entity.dart';
 
 class GetPosts {
-  final GetPosts getPosts;
+  final PostRepository postRepository;
 
-  GetPosts({required this.getPosts});
+  GetPosts({required this.postRepository});
 
   Future<Either<Failure, List<PostEntity>>> call() async {
-    return getPosts.getPosts();
+    return postRepository.getPosts();
   }
 }
