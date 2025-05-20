@@ -3,6 +3,7 @@ import 'package:blog_app/features/Post/presentation/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:blog_app/utils/helper_functions.dart';
+import 'package:lottie/lottie.dart';
 import '../../../../../../utils/constants.dart';
 import '../animations/change_screen_animation.dart';
 import 'bottom_text.dart';
@@ -25,7 +26,11 @@ class _LoginContentState extends State<LoginContent>
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
 
-  Widget inputField(String hint, IconData iconData, TextEditingController? controller) {
+  Widget inputField(
+    String hint,
+    IconData iconData,
+    TextEditingController? controller,
+  ) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 36, vertical: 8),
       child: SizedBox(
@@ -59,7 +64,7 @@ class _LoginContentState extends State<LoginContent>
       listener: (context, state) {
         if (state is LoginSuccess) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
+            const SnackBar(
               content: Text("Bienvenu sur Facebook"),
               backgroundColor: Colors.green,
             ),
@@ -69,14 +74,24 @@ class _LoginContentState extends State<LoginContent>
           );
         } else if (state is LoginFailure) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text("Un erreur lors de login"),
+            const SnackBar(
+              content: Text("Une erreur est survenue lors de la connexion"),
               backgroundColor: Colors.red,
             ),
           );
         }
       },
       builder: (context, state) {
+        if (state is LoginLoding) {
+          return Center(
+            child: SizedBox(
+              width: 150,
+              height: 150,
+              child: Lottie.asset('assets/animations/loading2.json'),
+            ),
+          );
+        }
+
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 135, vertical: 16),
           child: ElevatedButton(
@@ -163,17 +178,17 @@ class _LoginContentState extends State<LoginContent>
   @override
   void initState() {
     createAccountContent = [
-      inputField('Name', Ionicons.person_outline,null),
-      inputField('Email', Ionicons.mail_outline,null),
-      inputField('Password', Ionicons.lock_closed_outline,null),
+      inputField('Name', Ionicons.person_outline, null),
+      inputField('Email', Ionicons.mail_outline, null),
+      inputField('Password', Ionicons.lock_closed_outline, null),
       loginButton('Sign Up'),
       orDivider(),
       logos(),
     ];
 
     loginContent = [
-      inputField('Email', Ionicons.mail_outline,usernameController),
-      inputField('Password', Ionicons.lock_closed_outline,passwordController),
+      inputField('Email', Ionicons.mail_outline, usernameController),
+      inputField('Password', Ionicons.lock_closed_outline, passwordController),
       loginButton('Log In'),
       forgotPassword(),
     ];
