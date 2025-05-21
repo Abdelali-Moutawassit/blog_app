@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
-Widget bottomNavigationBar() {
+Widget bottomNavigationBar(int currentIndex, void Function(int) onTap) {
   return BottomNavigationBar(
-    currentIndex: 0,
+    currentIndex: currentIndex,
+    onTap: onTap,
     type: BottomNavigationBarType.fixed,
     selectedItemColor: Colors.amber,
     unselectedItemColor: Colors.grey,

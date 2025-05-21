@@ -6,7 +6,6 @@ class UserAvatars extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final userList = [
       'Emilia',
       'Richard',
@@ -18,29 +17,26 @@ class UserAvatars extends StatelessWidget {
     ];
 
     return SizedBox(
-                height: 120,
-                child: ListView.separated(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: userList.length,
-                  separatorBuilder: (_, __) => const SizedBox(width: 15),
-                  itemBuilder: (context, index) {
-                    return Column(
-                      children: [
-                        CircleAvatar(
-                          radius: 40,
-                          backgroundImage: NetworkImage(
-                            'https://i.pravatar.cc/150?img=${index + 10}',
-                          ),
-                        ),
-                        const SizedBox(height: 5),
-                        Text(
-                          userList[index],
-                          style: GoogleFonts.poppins(fontSize: 12),
-                        ),
-                      ],
-                    );
-                  },
+      height: 100,
+      child: ListView.separated(
+        scrollDirection: Axis.horizontal,
+        itemCount: userList.length,
+        separatorBuilder: (_, __) => const SizedBox(width: 14),
+        itemBuilder: (context, index) {
+          return Column(
+            children: [
+              CircleAvatar(
+                radius: 30,
+                backgroundImage: NetworkImage(
+                  'https://i.pravatar.cc/150?img=${index + 10}',
                 ),
-              );
+              ),
+              const SizedBox(height: 4),
+              Text(userList[index], style: GoogleFonts.poppins(fontSize: 10)),
+            ],
+          );
+        },
+      ),
+    );
   }
 }
