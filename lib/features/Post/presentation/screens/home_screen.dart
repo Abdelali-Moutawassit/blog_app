@@ -1,5 +1,4 @@
 import 'package:blog_app/features/Post/presentation/cubit/post_cubit.dart';
-import 'package:blog_app/navigation/bottom_navigation_bar.dart';
 import 'package:blog_app/features/Post/presentation/widgets/build_post_card.dart';
 import 'package:blog_app/features/Post/presentation/widgets/build_reels_section.dart';
 import 'package:blog_app/features/Post/presentation/widgets/category_cards.dart';
@@ -114,10 +113,8 @@ class HomeScreen extends StatelessWidget {
                         color: Colors.white,
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.black.withOpacity(
-                              0.1,
-                            ),
-                            offset: const Offset(0, 2), // vers le bas
+                            color: Colors.black.withValues(alpha: 0.1),
+                            offset: const Offset(0, 2),
                             blurRadius: 6, // flou
                           ),
                         ],

@@ -22,21 +22,20 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Login App',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        scaffoldBackgroundColor: kBackgroundColor,
-        textTheme: Theme.of(
-          context,
-        ).textTheme.apply(bodyColor: kPrimaryColor, fontFamily: 'Montserrat'),
-      ),
+      // theme: ThemeData(
+      //   scaffoldBackgroundColor: kBackgroundColor,
+      //   textTheme: Theme.of(
+      //     context,
+      //   ).textTheme.apply(bodyColor: kPrimaryColor, fontFamily: 'Montserrat'),
+      // ),
       // home: BlocProvider(
       //   create: (context) => LoginCubit(),
       //   child: const LoginScreen(),
       // ),
-      home:  HomePage(),
+      home: HomePage(),
     );
   }
 }
-
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -53,7 +52,7 @@ class _HomePageState extends State<HomePage> {
     ProfilePage(),
     CreatePostPage(),
     MessagesPage(),
-    AccountPage()
+    AccountPage(),
   ];
 
   void _onItemTapped(int index) {
