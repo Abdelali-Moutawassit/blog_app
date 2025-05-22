@@ -1,4 +1,4 @@
-import 'package:blog_app/features/Profil/presentation/widgets/build_post_card_profile.dart';
+import 'package:blog_app/features/Profile/presentation/widgets/build_post_card_profile.dart';
 import 'package:flutter/material.dart';
 
 Widget listPostsProfile() {

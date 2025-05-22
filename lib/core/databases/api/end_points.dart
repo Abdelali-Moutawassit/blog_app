@@ -19,5 +19,9 @@ class EndPoints {
     return "${baserUrl2}posts";
   }
 
+  static String get profile{
+    return "${baserUrl}users/1";
+  }
+
 
 }

@@ -9,14 +9,16 @@ class RemoteDatasource {
 
   Future<List<PostModel>> getPosts() async {
     try {
-      final postsJson = await api.get(EndPoints.posts);
-      if (postsJson == null) {
+      final responseJson = await api.get(EndPoints.posts);
+      if (responseJson == null) {
         throw Exception("Aucune donnée reçue");
       }
 
-      return (postsJson as List).map((post)=> PostModel.fromJson(post)).toList();
+      final List<dynamic> postsJson = responseJson['posts'];
+
+      return postsJson.map((post) => PostModel.fromJson(post)).toList();
     } catch (error) {
-      throw Exception("Erreur lors de login : $error");
+      throw Exception("Erreur lors de recuperation de posts: $error");
     }
   }
 }

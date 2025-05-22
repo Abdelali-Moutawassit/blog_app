@@ -1,12 +1,12 @@
-import 'package:blog_app/features/Profil/presentation/widgets/followers_profile.dart';
-import 'package:blog_app/features/Profil/presentation/widgets/images_profile.dart';
-import 'package:blog_app/features/Profil/presentation/widgets/info_profile.dart';
-import 'package:blog_app/features/Profil/presentation/widgets/navigation_profile.dart';
-import 'package:blog_app/features/Profil/presentation/widgets/videos_profile.dart';
+import 'package:blog_app/features/Profile/presentation/widgets/followers_profile.dart';
+import 'package:blog_app/features/Profile/presentation/widgets/images_profile.dart';
+import 'package:blog_app/features/Profile/presentation/widgets/info_profile.dart';
+import 'package:blog_app/features/Profile/presentation/widgets/navigation_profile.dart';
+import 'package:blog_app/features/Profile/presentation/widgets/videos_profile.dart';
 import 'package:flutter/material.dart';
-import 'package:blog_app/features/Profil/presentation/widgets/couverture_profile_widget.dart';
-import 'package:blog_app/features/Profil/presentation/widgets/info_utilisateur_widget.dart';
-import 'package:blog_app/features/Profil/presentation/widgets/list_posts_profile.dart';
+import 'package:blog_app/features/Profile/presentation/widgets/couverture_profile_widget.dart';
+import 'package:blog_app/features/Profile/presentation/widgets/info_utilisateur_widget.dart';
+import 'package:blog_app/features/Profile/presentation/widgets/list_posts_profile.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});

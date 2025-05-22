@@ -1,4 +1,4 @@
-import 'package:blog_app/features/Profil/presentation/screens/profile_screen.dart';
+import 'package:blog_app/features/Profile/presentation/screens/profile_screen.dart';
 import 'package:blog_app/pagesFake/account_page.dart';
 import 'package:blog_app/pagesFake/create_post_page.dart';
 import 'package:blog_app/pagesFake/messages_page.dart';
