@@ -1,3 +1,4 @@
+import 'package:blog_app/features/Profil/presentation/screens/profile_screen.dart';
 import 'package:blog_app/pagesFake/account_page.dart';
 import 'package:blog_app/pagesFake/create_post_page.dart';
 import 'package:blog_app/pagesFake/messages_page.dart';
@@ -49,10 +50,10 @@ class _HomePageState extends State<HomePage> {
 
   final List<Widget> _pages = const [
     HomeScreen(),
-    ProfilePage(),
+    AccountPage(),
     CreatePostPage(),
     MessagesPage(),
-    AccountPage(),
+    ProfileScreen(),
   ];
 
   void _onItemTapped(int index) {
