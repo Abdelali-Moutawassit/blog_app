@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-Widget infoUtilisateurWidget(screenWidth) {
+Widget infoUtilisateurWidget(screenWidth,{required String username}) {
   return SliverToBoxAdapter(
     child: Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
@@ -10,7 +10,7 @@ Widget infoUtilisateurWidget(screenWidth) {
         children: [
           // Nom
           Text(
-            'Daja',
+            username,
             style: GoogleFonts.poppins(
               fontSize: screenWidth * 0.06,
               fontWeight: FontWeight.w700,

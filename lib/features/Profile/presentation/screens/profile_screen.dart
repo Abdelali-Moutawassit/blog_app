@@ -1,3 +1,4 @@
+import 'package:blog_app/features/Profile/presentation/cubit/profile_cubit.dart';
 import 'package:blog_app/features/Profile/presentation/widgets/followers_profile.dart';
 import 'package:blog_app/features/Profile/presentation/widgets/images_profile.dart';
 import 'package:blog_app/features/Profile/presentation/widgets/info_profile.dart';
@@ -7,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:blog_app/features/Profile/presentation/widgets/couverture_profile_widget.dart';
 import 'package:blog_app/features/Profile/presentation/widgets/info_utilisateur_widget.dart';
 import 'package:blog_app/features/Profile/presentation/widgets/list_posts_profile.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -49,31 +51,48 @@ class _ProfileScreenState extends State<ProfileScreen> {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
 
-    return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          // --- Image + intro ---
-          couvertureProfileWidget(context, screenHeight, screenWidth),
-          SliverToBoxAdapter(child: SizedBox(height: screenWidth * 0.01)),
-          // --- Info User---
-          infoUtilisateurWidget(screenWidth),
-          // --- Onglets de navigation ---
-          navigationProfile(
-            selectedIndex: selectedIndex,
-            onTabSelected: (index) {
-              setState(() {
-                selectedIndex = index;
-              });
-            },
-          ),
-          // --- Affichage dynamique selon l'onglet ---
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.all(0.0),
-              child: getSelectedWidget(),
-            ),
-          ),
-        ],
+    return BlocProvider(
+      create: (context) => ProfileCubit()..eitherFailureOrProfile(),
+      child: BlocBuilder<ProfileCubit, ProfileState>(
+        builder: (context, state) {
+          if (state is ProfileLoading) {
+            return Center(child: CircularProgressIndicator());
+          } else if (state is ProfileFailure) {
+            return Center(child: Text('Erreur: ${state.failureMessage}'));
+          } else if (state is ProfileLoaded) {
+            return Scaffold(
+              body: CustomScrollView(
+                slivers: [
+                  couvertureProfileWidget(context, screenHeight, screenWidth),
+                  SliverToBoxAdapter(
+                    child: SizedBox(height: screenWidth * 0.01),
+                  ),
+                  infoUtilisateurWidget(
+                    screenWidth,
+                    username: state.profileEntity.username,
+                  ),
+                  navigationProfile(
+                    selectedIndex: selectedIndex,
+                    onTabSelected: (index) {
+                      setState(() {
+                        selectedIndex = index;
+                      });
+                    },
+                  ),
+                  SliverToBoxAdapter(
+                    child: Padding(
+                      padding: const EdgeInsets.all(0.0),
+                      child: getSelectedWidget(),
+                    ),
+                  ),
+                ],
+              ),
+            );
+          }
+
+          // ce
+          return Scaffold(body: Center(child: Text('État inconnu')));
+        },
       ),
     );
   }
