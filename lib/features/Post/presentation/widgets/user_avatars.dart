@@ -1,3 +1,4 @@
+import 'package:blog_app/pagesFake/Story_viewer_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -16,24 +17,49 @@ class UserAvatars extends StatelessWidget {
       'Look',
     ];
 
+    final stories =
+        userList
+            .asMap()
+            .entries
+            .map(
+              (entry) => {
+                'userName': entry.value,
+                'imageUrl': 'https://i.pravatar.cc/150?img=${entry.key + 10}',
+              },
+            )
+            .toList();
+
     return SizedBox(
       height: 100,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
-        itemCount: userList.length,
+        itemCount: stories.length,
         separatorBuilder: (_, __) => const SizedBox(width: 14),
         itemBuilder: (context, index) {
-          return Column(
-            children: [
-              CircleAvatar(
-                radius: 30,
-                backgroundImage: NetworkImage(
-                  'https://i.pravatar.cc/150?img=${index + 10}',
+          final story = stories[index];
+
+          return GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => StoryViewerPage(stories: stories),
                 ),
-              ),
-              const SizedBox(height: 4),
-              Text(userList[index], style: GoogleFonts.poppins(fontSize: 10)),
-            ],
+              );
+            },
+            child: Column(
+              children: [
+                CircleAvatar(
+                  radius: 30,
+                  backgroundImage: NetworkImage(story['imageUrl']!),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  story['userName']!,
+                  style: GoogleFonts.poppins(fontSize: 10),
+                ),
+              ],
+            ),
           );
         },
       ),
