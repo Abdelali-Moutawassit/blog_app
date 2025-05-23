@@ -1,3 +1,4 @@
+import 'package:blog_app/pagesFake/appel_music_page.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -82,11 +83,19 @@ class MessagesItemScreen extends StatelessWidget {
             ),
           ],
         ),
-        actions: const [
-          Icon(Icons.call, color: Colors.blue),
-          SizedBox(width: 16),
-          Icon(Icons.videocam, color: Colors.blue),
-          SizedBox(width: 16),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.call, color: Colors.black),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const AppelMusicPage()),
+              );
+            },
+          ),
+          const SizedBox(width: 16),
+          const Icon(Icons.videocam, color: Colors.black),
+          const SizedBox(width: 16),
         ],
       ),
       body: Column(

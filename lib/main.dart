@@ -2,13 +2,13 @@ import 'package:blog_app/features/Messagerie/presentation/screens/messages_scree
 import 'package:blog_app/features/Profile/presentation/screens/profile_screen.dart';
 import 'package:blog_app/pagesFake/create_post_page.dart';
 import 'package:blog_app/pagesFake/friends_screen.dart';
-import 'package:blog_app/features/Auth/presentation/cubit/login_cubit.dart';
-import 'package:blog_app/features/Auth/presentation/screens/login_screen.dart';
+// import 'package:blog_app/features/Auth/presentation/cubit/login_cubit.dart';
+// import 'package:blog_app/features/Auth/presentation/screens/login_screen.dart';
 import 'package:blog_app/features/Post/presentation/screens/home_screen.dart';
 import 'package:blog_app/navigation/bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'utils/constants.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+// import 'utils/constants.dart';
+// import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
   runApp(const MyApp());
