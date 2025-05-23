@@ -1,6 +1,8 @@
+import 'package:blog_app/features/Music/presentation/screens/music_screen.dart';
+import 'package:blog_app/pagesFake/notification_page.dart';
 import 'package:flutter/material.dart';
 
-Widget topBar(double screenWidth) {
+Widget topBar(double screenWidth, context) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
@@ -12,13 +14,31 @@ Widget topBar(double screenWidth) {
         children: [
           _styledIconButton(
             iconAsset: 'assets/images/not.png',
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) =>  NotificationPage(),
+                ),
+              );
+            },
             count: 3,
           ),
           const SizedBox(width: 12),
           _styledIconButton(
             iconAsset: 'assets/images/mes.png',
             onTap: () {},
+            count: 5,
+          ),
+          const SizedBox(width: 12),
+          _styledIconButton(
+            iconAsset: 'assets/images/mus.png',
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const MusicScreen()),
+              );
+            },
             count: 5,
           ),
         ],

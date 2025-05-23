@@ -102,7 +102,7 @@ class HomeScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-                      child: topBar(screenWidth),
+                      child: topBar(screenWidth,context),
                     ),
                   ),
                 ],

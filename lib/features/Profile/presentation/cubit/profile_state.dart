@@ -12,7 +12,7 @@ final class ProfileLoading extends ProfileState {
 final class ProfileLoaded extends ProfileState {
   final ProfileEntity profileEntity;
 
-  ProfileLoaded({required this.profileEntity});
+  const ProfileLoaded({required this.profileEntity});
 
   @override
   List<Object> get props => [profileEntity];
@@ -21,7 +21,7 @@ final class ProfileLoaded extends ProfileState {
 final class ProfileFailure extends ProfileState {
   final String failureMessage;
 
-  ProfileFailure({required this.failureMessage});
+  const ProfileFailure({required this.failureMessage});
 
   @override
   List<Object> get props => [failureMessage];
