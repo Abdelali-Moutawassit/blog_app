@@ -29,12 +29,12 @@ class ApiSpring extends StatelessWidget {
     try {
       final response = await dio.get(url);
       if (response.statusCode == 200) {
-        print(response.data);
+        // print(response.data);
       } else {
-        print("Error: ${response.statusCode}");
+        // print("Error: ${response.statusCode}");
       }
     } catch (e) {
-      print("Error: $e");
+      // print("Error: $e");
     }
   }
 
