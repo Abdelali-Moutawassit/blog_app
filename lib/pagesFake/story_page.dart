@@ -48,7 +48,7 @@ class _StoryPageState extends State<StoryPage>
             child: Image.network(
               widget.imageUrl,
               fit: BoxFit.cover,
-              color: Colors.black.withOpacity(0.3),
+              color: Colors.black.withValues(alpha: 0.3),
               colorBlendMode: BlendMode.darken,
             ),
           ),

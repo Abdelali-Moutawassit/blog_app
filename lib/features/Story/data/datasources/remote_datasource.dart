@@ -8,13 +8,14 @@ class RemoteDatasource {
   RemoteDatasource({required this.api});
 
   Future<List<StoryModel>> getStories() async {
-    try {
-      final responseJson = api.get(EndPoints.stories);
-      return (responseJson as List)
-          .map((storie) => StoryModel.fromJson(storie))
-          .toList();
-    } catch (e) {
-      throw Exception("Error lors de recuperation du stories : $e");
-    }
+  try {
+    final responseJson = await api.get(EndPoints.stories);
+    return (responseJson as List)
+        .map((storie) => StoryModel.fromJson(storie))
+        .toList();
+  } catch (e) {
+    throw Exception("Erreur lors de la récupération des stories : $e");
   }
+}
+
 }

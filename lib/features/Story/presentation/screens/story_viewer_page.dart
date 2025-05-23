@@ -83,7 +83,7 @@ class _StoryViewerPageState extends State<StoryViewerPage> with SingleTickerProv
                     child: Image.network(
                       story['imageUrl']!,
                       fit: BoxFit.cover,
-                      color: Colors.black.withOpacity(0.3),
+                      color: Colors.black.withValues(alpha: 0.3),
                       colorBlendMode: BlendMode.darken,
                     ),
                   ),

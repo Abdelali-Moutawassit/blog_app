@@ -2,8 +2,8 @@ import 'package:blog_app/features/Post/presentation/cubit/post_cubit.dart';
 import 'package:blog_app/features/Post/presentation/widgets/build_post_card.dart';
 import 'package:blog_app/features/Post/presentation/widgets/build_reels_section.dart';
 import 'package:blog_app/features/Post/presentation/widgets/category_cards.dart';
-import 'package:blog_app/features/Post/presentation/widgets/user_avatars.dart';
 import 'package:blog_app/features/Post/presentation/widgets/top_bar.dart';
+import 'package:blog_app/features/Post/presentation/widgets/user_avatars_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -29,7 +29,7 @@ class HomeScreen extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 20.0),
                       children: [
                         const SizedBox(height: 24),
-                        const UserAvatars(),
+                        const UserAvatarsCubit(),
                         const SizedBox(height: 24),
 
                         if (state is PostLoading) ...[

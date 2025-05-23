@@ -1,4 +1,4 @@
-import 'package:blog_app/pagesFake/Story_viewer_page.dart';
+import 'package:blog_app/features/Story/presentation/screens/story_viewer_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
