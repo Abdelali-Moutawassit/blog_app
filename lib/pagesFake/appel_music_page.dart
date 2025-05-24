@@ -5,10 +5,10 @@ class AppelMusicPage extends StatefulWidget {
   const AppelMusicPage({super.key});
 
   @override
-  State<AppelMusicPage> createState() => _AppelPageState();
+  State<AppelMusicPage> createState() => _AppelMusicPageState();
 }
 
-class _AppelPageState extends State<AppelMusicPage>
+class _AppelMusicPageState extends State<AppelMusicPage>
     with SingleTickerProviderStateMixin {
   final AudioPlayer _player = AudioPlayer();
 
@@ -19,11 +19,14 @@ class _AppelPageState extends State<AppelMusicPage>
   }
 
   Future<void> _playSound() async {
-    await _player.play(
-      UrlSource(
-        'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
-      ),
-    );
+    try {
+      await _player.play(
+        UrlSource('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3'),
+        volume: 1.0,
+      );
+    } catch (e) {
+      debugPrint("Erreur lors de la lecture audio : $e");
+    }
   }
 
   @override
@@ -51,7 +54,7 @@ class _AppelPageState extends State<AppelMusicPage>
                   begin: Alignment.bottomCenter,
                   end: Alignment.topCenter,
                   colors: [
-                    Colors.black.withValues(alpha: 0.6),
+                    Colors.black.withOpacity(0.6),
                     Colors.transparent,
                   ],
                 ),
@@ -107,7 +110,7 @@ class _AppelPageState extends State<AppelMusicPage>
                   icon: Icons.call_end,
                   color: Colors.red,
                   onPressed: () {
-                    _player.stop(); // arrêter la musique
+                    _player.stop();
                     Navigator.pop(context);
                   },
                 ),
@@ -143,27 +146,39 @@ class AnimatedCallButton extends StatefulWidget {
   State<AnimatedCallButton> createState() => _AnimatedCallButtonState();
 }
 
-class _AnimatedCallButtonState extends State<AnimatedCallButton> {
+class _AnimatedCallButtonState extends State<AnimatedCallButton>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _animation;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 800),
+    )..repeat(reverse: true); // boucle infinie
+    _animation = Tween<double>(begin: 1.0, end: 1.2).animate(
+      CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return TweenAnimationBuilder<double>(
-      tween: Tween(begin: 1.0, end: 1.2),
-      duration: const Duration(milliseconds: 1000),
-      curve: Curves.easeInOut,
-      builder: (context, scale, child) {
-        return Transform.scale(
-          scale: scale,
-          child: FloatingActionButton(
-            heroTag: null,
-            onPressed: widget.onPressed,
-            backgroundColor: widget.color,
-            child: Icon(widget.icon, size: 28),
-          ),
-        );
-      },
-      onEnd: () {
-        setState(() {}); // boucle d’animation
-      },
+    return ScaleTransition(
+      scale: _animation,
+      child: FloatingActionButton(
+        heroTag: null,
+        onPressed: widget.onPressed,
+        backgroundColor: widget.color,
+        child: Icon(widget.icon, size: 28),
+      ),
     );
   }
 }
