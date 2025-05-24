@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 
-class AppelMusicPage extends StatefulWidget {
-  const AppelMusicPage({super.key});
+class AppelMusicScreen extends StatefulWidget {
+  const AppelMusicScreen({super.key});
 
   @override
-  State<AppelMusicPage> createState() => _AppelMusicPageState();
+  State<AppelMusicScreen> createState() => _AppelMusicPageState();
 }
 
-class _AppelMusicPageState extends State<AppelMusicPage>
+class _AppelMusicPageState extends State<AppelMusicScreen>
     with SingleTickerProviderStateMixin {
   final AudioPlayer _player = AudioPlayer();
 
