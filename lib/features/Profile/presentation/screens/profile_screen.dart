@@ -9,6 +9,7 @@ import 'package:blog_app/features/Profile/presentation/widgets/couverture_profil
 import 'package:blog_app/features/Profile/presentation/widgets/info_utilisateur_widget.dart';
 import 'package:blog_app/features/Profile/presentation/widgets/list_posts_profile.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lottie/lottie.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -56,7 +57,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
       child: BlocBuilder<ProfileCubit, ProfileState>(
         builder: (context, state) {
           if (state is ProfileLoading) {
-            return Center(child: CircularProgressIndicator());
+            return Center(
+              child: Lottie.asset('assets/animations/loading2.json'),
+            );
           } else if (state is ProfileFailure) {
             return Center(child: Text('Erreur: ${state.failureMessage}'));
           } else if (state is ProfileLoaded) {

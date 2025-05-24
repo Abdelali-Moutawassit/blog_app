@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 Widget bottomNavigationBar(int currentIndex, void Function(int) onTap) {
   return BottomNavigationBar(
+    backgroundColor: Colors.white,
     currentIndex: currentIndex,
     onTap: onTap,
     type: BottomNavigationBarType.fixed,

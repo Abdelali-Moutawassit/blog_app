@@ -3,6 +3,7 @@ import 'package:blog_app/features/Messagerie/presentation/screens/appel_video_sc
 import 'package:blog_app/db/messagrieItemPage/message_item_db.dart';
 import 'package:blog_app/features/Messagerie/presentation/widgets/build_message_input.dart';
 import 'package:blog_app/features/Messagerie/presentation/widgets/build_voice_message.dart';
+import 'package:blog_app/pagesFake/info_contact.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -11,30 +12,37 @@ class MessagesItemScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       backgroundColor: const Color(0xFFF5F7FA),
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 1,
         leading: const BackButton(color: Colors.black),
-        title: Row(
-          children: const [
-            CircleAvatar(
-              backgroundImage: NetworkImage(
-                "https://randomuser.me/api/portraits/women/44.jpg",
+        title: GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const InfoContact()),
+            );
+          },
+          child: Row(
+            children: const [
+              CircleAvatar(
+                backgroundImage: NetworkImage(
+                  "https://randomuser.me/api/portraits/women/44.jpg",
+                ),
+                radius: 18,
               ),
-              radius: 18,
-            ),
-            SizedBox(width: 10),
-            Text(
-              "Sophia Hernan",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
+              SizedBox(width: 10),
+              Text(
+                "Sophia Hernan",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
         actions: [
           IconButton(
@@ -157,6 +165,4 @@ class MessagesItemScreen extends StatelessWidget {
       ),
     );
   }
-
-  
-  }
+}
