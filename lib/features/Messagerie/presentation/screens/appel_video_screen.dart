@@ -85,7 +85,7 @@ class AppelVideoScreen extends StatelessWidget {
       onTap: onTap,
       child: CircleAvatar(
         radius: 28,
-        backgroundColor: bgColor.withOpacity(0.9),
+        backgroundColor: bgColor.withValues(alpha: 0.9),
         child: Icon(icon, color: Colors.black, size: 26),
       ),
     );
