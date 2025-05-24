@@ -1,5 +1,6 @@
 import 'package:blog_app/features/Messagerie/presentation/screens/messages_screen.dart';
 import 'package:blog_app/features/Profile/presentation/screens/profile_screen.dart';
+import 'package:blog_app/navigation/custom_bottom_nav_bar.dart';
 import 'package:blog_app/pagesFake/create_post_page.dart';
 import 'package:blog_app/pagesFake/friends_screen.dart';
 // import 'package:blog_app/features/Auth/presentation/cubit/login_cubit.dart';
@@ -65,7 +66,10 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _pages[_selectedIndex],
-      bottomNavigationBar: bottomNavigationBar(_selectedIndex, _onItemTapped),
+      bottomNavigationBar: CustomBottomNavBar(
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
+      ),
     );
   }
 }
