@@ -1,3 +1,4 @@
+// import 'package:blog_app/design/home_design.dart';
 import 'package:blog_app/features/Messagerie/presentation/screens/messages_screen.dart';
 import 'package:blog_app/features/Profile/presentation/screens/profile_screen.dart';
 import 'package:blog_app/navigation/custom_bottom_nav_bar.dart';
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
       //   create: (context) => LoginCubit(),
       //   child: const LoginScreen(),
       // ),
-      home: HomePage(),
+      home: HomeScreen(),
     );
   }
 }
