@@ -1,4 +1,5 @@
 // import 'package:blog_app/design/home_design.dart';
+import 'package:blog_app/features/PostTest/presentation/screens/home_design.dart';
 import 'package:blog_app/features/Messagerie/presentation/screens/messages_screen.dart';
 import 'package:blog_app/features/Profile/presentation/screens/profile_screen.dart';
 import 'package:blog_app/navigation/custom_bottom_nav_bar.dart';
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
       //   create: (context) => LoginCubit(),
       //   child: const LoginScreen(),
       // ),
-      home: HomeScreen(),
+      home: HomePage(),
     );
   }
 }
@@ -49,12 +50,12 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
-  final List<Widget> _pages = const [
-    HomeScreen(),
-    FriendsScreen(),
-    CreatePostPage(),
-    MessagesScreen(),
-    ProfileScreen(),
+  final List<Widget> _pages = [
+    HomeDesign(),
+    const FriendsScreen(),
+    const CreatePostPage(),
+    const MessagesScreen(),
+    const ProfileScreen(),
   ];
 
   void _onItemTapped(int index) {
