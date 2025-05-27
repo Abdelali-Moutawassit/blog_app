@@ -1,10 +1,18 @@
+import 'package:blog_app/core/connection/network_info.dart';
+import 'package:blog_app/core/databases/api/dio_consumer.dart';
+import 'package:blog_app/features/PostTest/data/datasources/remote_datasource.dart';
+import 'package:blog_app/features/PostTest/data/repositories/post_repository_impl.dart';
+import 'package:blog_app/features/PostTest/domain/usecases/add_reaction.dart';
+import 'package:blog_app/features/PostTest/presentation/cubit/reaction_cubit.dart';
 import 'package:blog_app/features/PostTest/presentation/screens/post_design_widget.dart';
 import 'package:blog_app/features/PostTest/presentation/cubit/post_cubit.dart';
 import 'package:blog_app/features/PostTest/presentation/screens/create_post_card.dart';
 import 'package:blog_app/features/Post/presentation/widgets/build_reels_section.dart';
 import 'package:blog_app/features/Post/presentation/widgets/user_avatars.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 class HomeDesign extends StatelessWidget {
   final List<String> stories = [
@@ -72,9 +80,9 @@ class HomeDesign extends StatelessWidget {
                 if (state is PostLoading) {
                   return Center(child: CircularProgressIndicator());
                 } else if (state is PostFailure) {
-                  return Center(child: Text((state as PostFailure).message));
+                  return Center(child: Text((state).message));
                 } else if (state is PostLoaded) {
-                  final posts = (state as PostLoaded).posts;
+                  final posts = (state).posts;
                   return ListView(
                     padding: EdgeInsets.all(16),
                     children: [
@@ -92,7 +100,10 @@ class HomeDesign extends StatelessWidget {
                         shrinkWrap: true,
                         itemCount: posts.length,
                         itemBuilder: (context, index) {
-                          return postWidget(posts[index]);
+                          return BlocProvider(
+                            create: (context) => ReactionCubit(addReactionUseCase: AddReactionToPostUseCase(PostRepositoryImpl(networkInfo: NetworkInfoImpl(InternetConnectionChecker.instance),remoteDatasource: RemoteDatasource(api: DioConsumer(dio: Dio()))))),
+                            child: postWidget(posts[index]),
+                          );
                         },
                       ),
                     ],

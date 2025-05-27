@@ -32,4 +32,28 @@ class PostRepositoryImpl implements PostRepository {
       return Left(Failure(errMessage: 'Aucune connexion Internet'));
     }
   }
+
+  @override
+  Future<Either<Failure, Unit>> addReactionToPost({
+    required int postId,
+    required int userId,
+    required String reactionType,
+  }) async {
+    if (await networkInfo.isConnected!) {
+      try {
+        await remoteDatasource.addReactionToPost(
+          postId: postId,
+          userId: userId,
+          reactionType: reactionType,
+        );
+        return const Right(unit);
+      } on ServerException catch (e) {
+        return Left(Failure(errMessage: e.errorModel.errorMessage));
+      } catch (e) {
+        return Left(Failure(errMessage: 'Erreur inattendue : $e'));
+      }
+    } else {
+      return Left(Failure(errMessage: 'Pas de connexion Internet'));
+    }
+  }
 }

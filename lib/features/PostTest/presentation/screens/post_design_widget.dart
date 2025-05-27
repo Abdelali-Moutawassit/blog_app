@@ -1,6 +1,8 @@
 import 'package:blog_app/features/PostTest/domain/entities/post_entity.dart';
+import 'package:blog_app/features/PostTest/presentation/cubit/reaction_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 Widget postWidget(PostEntity post) {
   return Container(
@@ -14,11 +16,7 @@ Widget postWidget(PostEntity post) {
       children: [
         Row(
           children: [
-            CircleAvatar(
-              backgroundImage: NetworkImage(
-                post.imageUrl,
-              ),
-            ),
+            CircleAvatar(backgroundImage: NetworkImage(post.imageUrl)),
             SizedBox(width: 10),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,9 +47,7 @@ Widget postWidget(PostEntity post) {
           children: [
             CircleAvatar(
               radius: 12,
-              backgroundImage: NetworkImage(
-                post.imageUrl,
-              ),
+              backgroundImage: NetworkImage(post.imageUrl),
             ),
             SizedBox(width: 5),
             Text("Liked by rebecca_jones and 155 others"),
@@ -63,9 +59,44 @@ Widget postWidget(PostEntity post) {
         // Actions
         Row(
           children: [
-            Icon(Icons.favorite_border, color: Colors.grey[700]),
-            const SizedBox(width: 4),
-            Text('253', style: GoogleFonts.poppins(fontSize: 13)),
+            BlocConsumer<ReactionCubit, ReactionState>(
+              listener: (context, state) {
+                if (state is ReactionFailure) {
+                  ScaffoldMessenger.of(
+                    context,
+                  ).showSnackBar(SnackBar(content: Text(state.message)));
+                }
+              },
+              builder: (context, state) {
+                final isLiked = state is ReactionSuccess;
+                final likeCount = isLiked ? post.likeCount + 1 : post.likeCount;
+
+                return Row(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        context.read<ReactionCubit>().addReaction(
+                          postId: post.id,
+                          userId: 1, // à remplacer dynamiquement
+                          reactionType: "like",
+                        );
+                      },
+                      child: Icon(
+                        state is ReactionLoading || isLiked
+                            ? Icons.favorite
+                            : Icons.favorite_border,
+                        color: isLiked ? Colors.red : Colors.grey[700],
+                      ),
+                    ),
+                    const SizedBox(width: 4),
+                    Text(
+                      "$likeCount",
+                      style: GoogleFonts.poppins(fontSize: 13),
+                    ),
+                  ],
+                );
+              },
+            ),
 
             const SizedBox(width: 16),
 
