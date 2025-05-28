@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// import 'widgets/build_profile_item.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
   final int currentIndex;
@@ -38,13 +39,14 @@ class CustomBottomNavBar extends StatelessWidget {
                 _buildNavItem('assets/images/home.png', 0, currentIndex),
                 _buildNavItem('assets/images/user.png', 1, currentIndex),
                 _buildNavItem(
-                  'assets/images/add.png',
+                  'assets/images/add2.png',
                   2,
                   currentIndex,
                   isLarge: true,
                 ),
                 _buildNavItem('assets/images/message.png', 3, currentIndex),
-                _buildProfileItem(4, currentIndex),
+                _buildNavItem('assets/images/image.png', 4, currentIndex),
+                // _buildProfileItem(4, currentIndex),
               ],
             ),
           ),
@@ -65,33 +67,12 @@ class CustomBottomNavBar extends StatelessWidget {
         padding: EdgeInsets.all(8),
         child: Image.asset(
           iconPath,
-          width: isLarge ? 40 : 24,
-          height: isLarge ? 40 : 24,
+          width: isLarge ? 35 : 24,
+          height: isLarge ? 35 : 24,
           color: index == selectedIndex ? Colors.amber : Colors.grey[400],
         ),
       ),
     );
   }
 
-  Widget _buildProfileItem(int index, int selectedIndex) {
-    return GestureDetector(
-      onTap: () => onTap(index),
-      child: CircleAvatar(
-        radius: 16,
-        backgroundColor: Colors.transparent,
-        backgroundImage: NetworkImage(
-          'https://randomuser.me/api/portraits/men/73.jpg',
-        ),
-        child:
-            index == selectedIndex
-                ? Container(
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(color: Colors.amber, width: 2),
-                  ),
-                )
-                : null,
-      ),
-    );
-  }
 }

@@ -100,9 +100,28 @@ class HomeDesign extends StatelessWidget {
                         shrinkWrap: true,
                         itemCount: posts.length,
                         itemBuilder: (context, index) {
-                          return BlocProvider(
-                            create: (context) => ReactionCubit(addReactionUseCase: AddReactionToPostUseCase(PostRepositoryImpl(networkInfo: NetworkInfoImpl(InternetConnectionChecker.instance),remoteDatasource: RemoteDatasource(api: DioConsumer(dio: Dio()))))),
-                            child: postWidget(posts[index]),
+                          return Padding(
+                            padding: const EdgeInsets.only(
+                              bottom: 16.0,
+                            ),
+                            child: BlocProvider(
+                              create:
+                                  (context) => ReactionCubit(
+                                    addReactionUseCase:
+                                        AddReactionToPostUseCase(
+                                          PostRepositoryImpl(
+                                            networkInfo: NetworkInfoImpl(
+                                              InternetConnectionChecker
+                                                  .instance,
+                                            ),
+                                            remoteDatasource: RemoteDatasource(
+                                              api: DioConsumer(dio: Dio()),
+                                            ),
+                                          ),
+                                        ),
+                                  ),
+                              child: postWidget(posts[index]),
+                            ),
                           );
                         },
                       ),

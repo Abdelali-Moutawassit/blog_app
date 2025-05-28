@@ -1,5 +1,6 @@
 import 'package:blog_app/features/PostTest/domain/entities/post_entity.dart';
 import 'package:blog_app/features/PostTest/presentation/cubit/reaction_cubit.dart';
+import 'package:blog_app/utils/functions.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -25,9 +26,15 @@ Widget postWidget(PostEntity post) {
                   post.userName,
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
-                Text(
-                  post.createdAt,
-                  style: TextStyle(fontSize: 12, color: Colors.grey),
+                Row(
+                  children: [
+                    Text(
+                      formatDateTime(post.createdAt),
+                      style: TextStyle(fontSize: 12, color: Colors.grey),
+                    ),
+                    const SizedBox(width: 4),
+                    Icon(Icons.public, size: 14, color: Colors.grey),
+                  ],
                 ),
               ],
             ),
