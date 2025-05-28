@@ -16,27 +16,36 @@ Widget postWidget(PostEntity post) {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CircleAvatar(backgroundImage: NetworkImage(post.imageUrl)),
-            SizedBox(width: 10),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  post.userName,
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                Row(
-                  children: [
-                    Text(
-                      formatDateTime(post.createdAt),
-                      style: TextStyle(fontSize: 12, color: Colors.grey),
-                    ),
-                    const SizedBox(width: 4),
-                    Icon(Icons.public, size: 14, color: Colors.grey),
-                  ],
-                ),
-              ],
+            const SizedBox(width: 10),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    post.userName,
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        formatDateTime(post.createdAt),
+                        style: TextStyle(fontSize: 12, color: Colors.grey),
+                      ),
+                      const SizedBox(width: 4),
+                      const Icon(Icons.public, size: 14, color: Colors.grey),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            IconButton(
+              icon: Icon(Icons.more_vert, color: Colors.grey[700]),
+              onPressed: () {
+                // Action sauvegarde
+              },
             ),
           ],
         ),
@@ -45,9 +54,7 @@ Widget postWidget(PostEntity post) {
         SizedBox(height: 10),
         ClipRRect(
           borderRadius: BorderRadius.circular(10),
-          child: Image.network(
-            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBZjmRd6fUkEG7W_2s8gqD8y6W8qqPiAur-g&s',
-          ),
+          child: Image.network(post.profileImageUrl),
         ),
         SizedBox(height: 10),
         Row(

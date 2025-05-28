@@ -41,7 +41,7 @@ class HomeDesign extends StatelessWidget {
                 children: [
                   CircleAvatar(
                     backgroundImage: NetworkImage(
-                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBZjmRd6fUkEG7W_2s8gqD8y6W8qqPiAur-g&s',
+                      'https://media.istockphoto.com/id/527343577/photo/looking-for-inspiration.jpg?s=612x612&w=0&k=20&c=ck3lswRHkRpvxurShBPaRj5dvieSo1N0ZPqXA4XdOnk=',
                     ),
                   ),
                   SizedBox(width: 10),
@@ -90,7 +90,7 @@ class HomeDesign extends StatelessWidget {
                       SizedBox(height: 5),
                       CreatePostCard(
                         profileImageUrl:
-                            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBZjmRd6fUkEG7W_2s8gqD8y6W8qqPiAur-g&s',
+                            'https://media.istockphoto.com/id/527343577/photo/looking-for-inspiration.jpg?s=612x612&w=0&k=20&c=ck3lswRHkRpvxurShBPaRj5dvieSo1N0ZPqXA4XdOnk=',
                       ),
                       SizedBox(height: 20),
                       buildReelsSection(),
@@ -101,9 +101,7 @@ class HomeDesign extends StatelessWidget {
                         itemCount: posts.length,
                         itemBuilder: (context, index) {
                           return Padding(
-                            padding: const EdgeInsets.only(
-                              bottom: 16.0,
-                            ),
+                            padding: const EdgeInsets.only(bottom: 16.0),
                             child: BlocProvider(
                               create:
                                   (context) => ReactionCubit(

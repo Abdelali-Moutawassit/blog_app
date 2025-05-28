@@ -6,6 +6,7 @@ class PostModel extends PostEntity {
     required super.userId,
     required super.userName,
     required super.content,
+    required super.profileImageUrl,
     required super.imageUrl,
     required super.createdAt,
     required super.likeCount,
@@ -17,6 +18,7 @@ class PostModel extends PostEntity {
       userId: map['userId'],
       userName: map['userName'],
       content: map['content'],
+      profileImageUrl: map['profileImageUrl'],
       imageUrl: map['imageUrl'],
       createdAt: map['createdAt'],
       likeCount: map['likeCount'],
@@ -24,6 +26,6 @@ class PostModel extends PostEntity {
   }
 
   Map<String, dynamic> toJson() {
-    return {'id': id, 'userId': userId, 'userName': userName, 'content': content,'imageUrl':imageUrl, 'createdAt':createdAt,'likeCount':likeCount};
+    return {'id': id, 'userId': userId, 'userName': userName, 'content': content,'profileImageUrl': profileImageUrl,'imageUrl':imageUrl, 'createdAt':createdAt,'likeCount':likeCount};
   }
 }
