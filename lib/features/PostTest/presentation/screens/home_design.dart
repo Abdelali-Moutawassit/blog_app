@@ -9,10 +9,14 @@ import 'package:blog_app/features/PostTest/presentation/cubit/post_cubit.dart';
 import 'package:blog_app/features/PostTest/presentation/screens/create_post_card.dart';
 import 'package:blog_app/features/Post/presentation/widgets/build_reels_section.dart';
 import 'package:blog_app/features/Post/presentation/widgets/user_avatars.dart';
+import 'package:blog_app/features/PostTest/presentation/widgets/styled_icon_button.dart';
+import 'package:blog_app/features/Profile/presentation/screens/profile_screen.dart';
+import 'package:blog_app/pagesFake/notification_page.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:blog_app/features/Music/presentation/screens/music_screen.dart';
 
 class HomeDesign extends StatelessWidget {
   final List<String> stories = [
@@ -39,9 +43,19 @@ class HomeDesign extends StatelessWidget {
               elevation: 0,
               title: Row(
                 children: [
-                  CircleAvatar(
-                    backgroundImage: NetworkImage(
-                      'https://media.istockphoto.com/id/527343577/photo/looking-for-inspiration.jpg?s=612x612&w=0&k=20&c=ck3lswRHkRpvxurShBPaRj5dvieSo1N0ZPqXA4XdOnk=',
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ProfileScreen(),
+                        ),
+                      );
+                    },
+                    child: CircleAvatar(
+                      backgroundImage: NetworkImage(
+                        'https://media.istockphoto.com/id/527343577/photo/looking-for-inspiration.jpg?s=612x612&w=0&k=20&c=ck3lswRHkRpvxurShBPaRj5dvieSo1N0ZPqXA4XdOnk=',
+                      ),
                     ),
                   ),
                   SizedBox(width: 10),
@@ -69,9 +83,29 @@ class HomeDesign extends StatelessWidget {
                   icon: Icon(Icons.search, color: Colors.black),
                   onPressed: () {},
                 ),
-                IconButton(
-                  icon: Icon(Icons.notifications_none, color: Colors.black),
-                  onPressed: () {},
+                styledIconButton(
+                  iconAsset: 'assets/images/mus.png',
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const MusicScreen(),
+                      ),
+                    );
+                  },
+                  count: 5,
+                ),
+                styledIconButton(
+                  iconAsset: 'assets/images/not.png',
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => NotificationPage(),
+                      ),
+                    );
+                  },
+                  count: 3,
                 ),
               ],
             ),
