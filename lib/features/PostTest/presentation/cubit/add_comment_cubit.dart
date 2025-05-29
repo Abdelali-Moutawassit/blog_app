@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:blog_app/features/PostTest/domain/usecases/add_comment.dart';
 import 'package:blog_app/features/PostTest/presentation/cubit/add_comment_state.dart';
-import 'package:equatable/equatable.dart';
 
 
 class AddCommentCubit extends Cubit<AddCommentState> {

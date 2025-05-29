@@ -12,10 +12,11 @@ class AddCommentToPostUseCase {
     required int userId,
     required String content,
   }) {
-    return repository.addReactionToPost(
+    return repository.addCommentToPost(
       postId: postId,
       userId: userId,
-      reactionType: content,
+      content: content,
     );
   }
 }
+
