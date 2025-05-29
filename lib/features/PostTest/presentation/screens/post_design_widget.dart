@@ -84,6 +84,7 @@ Widget postWidget(PostEntity post) {
               builder: (context, state) {
                 final isLiked = state is ReactionSuccess;
                 final likeCount = isLiked ? post.likeCount + 1 : post.likeCount;
+                final isLikedByUser1 = post.likedBy.any((user) => user.id == 1);
 
                 return Row(
                   children: [
@@ -91,15 +92,15 @@ Widget postWidget(PostEntity post) {
                       onTap: () {
                         context.read<ReactionCubit>().addReaction(
                           postId: post.id,
-                          userId: 1, // à remplacer dynamiquement
+                          userId: 1,
                           reactionType: "like",
                         );
                       },
                       child: Icon(
-                        state is ReactionLoading || isLiked
+                        state is ReactionLoading || isLiked || isLikedByUser1
                             ? Icons.favorite
                             : Icons.favorite_border,
-                        color: isLiked ? Colors.red : Colors.grey[700],
+                        color: isLikedByUser1 ? Colors.red : Colors.grey[700],
                       ),
                     ),
                     const SizedBox(width: 4),
