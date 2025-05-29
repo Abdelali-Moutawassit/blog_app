@@ -1,10 +1,10 @@
 // import 'package:blog_app/design/home_design.dart';
 import 'package:blog_app/features/PostTest/presentation/screens/home_design.dart';
 import 'package:blog_app/features/Messagerie/presentation/screens/messages_screen.dart';
-import 'package:blog_app/features/Profile/presentation/screens/profile_screen.dart';
 import 'package:blog_app/navigation/custom_bottom_nav_bar.dart';
 import 'package:blog_app/pagesFake/create_post_page.dart';
 import 'package:blog_app/pagesFake/friends_screen.dart';
+import 'package:blog_app/pagesFake/setting_page2.dart';
 // import 'package:blog_app/features/Auth/presentation/cubit/login_cubit.dart';
 // import 'package:blog_app/features/Auth/presentation/screens/login_screen.dart';
 // import 'package:blog_app/features/Post/presentation/screens/home_screen.dart';
@@ -55,7 +55,7 @@ class _HomePageState extends State<HomePage> {
     const FriendsScreen(),
     const CreatePostPage(),
     const MessagesScreen(),
-    const ProfileScreen(),
+    const SettingPage(),
   ];
 
   void _onItemTapped(int index) {
