@@ -1,3 +1,4 @@
+import 'package:blog_app/features/PostTest/data/models/sub_models/comment_model.dart';
 import 'package:blog_app/features/PostTest/data/models/sub_models/user_model.dart';
 import 'package:blog_app/features/PostTest/domain/entities/post_entity.dart';
 
@@ -12,6 +13,7 @@ class PostModel extends PostEntity {
     required super.createdAt,
     required super.likeCount,
     required super.likedBy,
+    required super.comments
   });
 
   factory PostModel.fromJson(Map<String, dynamic> map) {
@@ -26,6 +28,9 @@ class PostModel extends PostEntity {
       likeCount: map['likeCount'],
       likedBy: (map['likedBy'] as List)
           .map((user) => UserModel.fromJson(user))
+          .toList(),
+      comments: (map['comments'] as List)
+          .map((comment) => CommentModel.fromJson(comment))
           .toList()
     );
   }
