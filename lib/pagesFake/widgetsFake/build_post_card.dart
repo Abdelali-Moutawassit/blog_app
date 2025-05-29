@@ -3,7 +3,6 @@ import 'package:blog_app/utils/functions.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-
 Widget buildPostCard({
   required String userName,
   required String userImageUrl,
@@ -152,14 +151,16 @@ Widget buildPostCard({
                   itemBuilder: (context, index) {
                     final comment = comments[index];
                     return Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 6),
+                      padding: const EdgeInsets.symmetric(vertical: 15),
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           // Avatar à gauche
                           CircleAvatar(
                             radius: 16,
-                            backgroundImage: NetworkImage(comment.profileImageUrl),
+                            backgroundImage: NetworkImage(
+                              comment.profileImageUrl,
+                            ),
                           ),
                           const SizedBox(width: 8),
 
@@ -177,7 +178,7 @@ Widget buildPostCard({
                                       Row(
                                         children: [
                                           Text(
-                                            "TestName",
+                                            comment.userName,
                                             style: GoogleFonts.poppins(
                                               fontWeight: FontWeight.w600,
                                               fontSize: 13,
@@ -185,7 +186,7 @@ Widget buildPostCard({
                                           ),
                                           const SizedBox(width: 6),
                                           Text(
-                                            formatDateTime(comment.createdAt,),
+                                            formatDateTime(comment.createdAt),
                                             style: GoogleFonts.poppins(
                                               fontSize: 11,
                                               color: Colors.grey[600],

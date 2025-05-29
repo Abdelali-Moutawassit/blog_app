@@ -6,6 +6,7 @@ class CommentModel extends CommentEntity {
     required super.content,
     required super.createdAt,
     required super.profileImageUrl,
+    required super.userName,
   });
 
   factory CommentModel.fromJson(Map<String, dynamic> json) {
@@ -14,6 +15,7 @@ class CommentModel extends CommentEntity {
       content: json['content'],
       createdAt: json['createdAt'],
       profileImageUrl: json['profileImageUrl'],
+      userName: json['userName'],
     );
   }
 }
