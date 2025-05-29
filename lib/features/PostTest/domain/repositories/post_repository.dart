@@ -9,4 +9,9 @@ abstract class PostRepository {
     required int userId,
     required String reactionType,
   });
+  Future<Either<Failure, Unit>> addCommentToPost({
+    required int postId,
+    required int userId,
+    required String content,
+  });
 }

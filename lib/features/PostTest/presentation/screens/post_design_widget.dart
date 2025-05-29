@@ -1,6 +1,6 @@
 import 'package:blog_app/features/PostTest/domain/entities/post_entity.dart';
 import 'package:blog_app/features/PostTest/presentation/cubit/reaction_cubit.dart';
-import 'package:blog_app/pagesFake/post_detail_page.dart';
+import 'package:blog_app/features/PostTest/presentation/screens/post_detail_screen.dart';
 import 'package:blog_app/utils/functions.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -58,7 +58,7 @@ Widget postWidget(PostEntity post, context) {
             Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => PostDetailPage(post : post),
+                        builder: (context) => PostDetailScreen(post : post),
                       ),
                     );
           },

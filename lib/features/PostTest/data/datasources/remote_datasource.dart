@@ -23,18 +23,32 @@ class RemoteDatasource {
   }
 
   Future<void> addReactionToPost({
-  required int postId,
-  required int userId,
-  required String reactionType,
-}) async {
-  try {
-    final endpoint = '${EndPointsApi.posts}/$postId/reactions?userId=$userId';
-    final body = {'type': reactionType};
+    required int postId,
+    required int userId,
+    required String reactionType,
+  }) async {
+    try {
+      final endpoint = '${EndPointsApi.posts}/$postId/reactions?userId=$userId';
+      final body = {'type': reactionType};
 
-    await api.post(endpoint, data: body);
-  } catch (error) {
-    throw Exception('Erreur lors de l’ajout de la réaction : $error');
+      await api.post(endpoint, data: body);
+    } catch (error) {
+      throw Exception('Erreur lors de l’ajout de la réaction : $error');
+    }
   }
-}
 
+  Future<void> addCommentToPost({
+    required int postId,
+    required int userId,
+    required String content,
+  }) async {
+    try {
+      final endpoint = EndPointsApi.addComment(userId, postId);
+      final body = {'content': content};
+
+      await api.post(endpoint, data: body);
+    } catch (error) {
+      throw Exception('Erreur lors de l’ajout du commentaire : $error');
+    }
+  }
 }
