@@ -1,19 +1,8 @@
+import 'package:blog_app/features/PostTest/domain/entities/sub_entities/comment_entity.dart';
+import 'package:blog_app/utils/functions.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Comment {
-  final String userName;
-  final String userImage;
-  final String text;
-  final String date;
-
-  Comment({
-    required this.userName,
-    required this.userImage,
-    required this.text,
-    required this.date,
-  });
-}
 
 Widget buildPostCard({
   required String userName,
@@ -25,7 +14,7 @@ Widget buildPostCard({
   String? songTitle,
   int reactionsCount = 0,
   int commentsCount = 0,
-  List<Comment>? comments,
+  List<CommentEntity>? comments,
 }) {
   return SizedBox(
     height: 580,
@@ -170,7 +159,7 @@ Widget buildPostCard({
                           // Avatar à gauche
                           CircleAvatar(
                             radius: 16,
-                            backgroundImage: NetworkImage(comment.userImage),
+                            backgroundImage: NetworkImage(comment.profileImageUrl),
                           ),
                           const SizedBox(width: 8),
 
@@ -188,7 +177,7 @@ Widget buildPostCard({
                                       Row(
                                         children: [
                                           Text(
-                                            comment.userName,
+                                            "TestName",
                                             style: GoogleFonts.poppins(
                                               fontWeight: FontWeight.w600,
                                               fontSize: 13,
@@ -196,7 +185,7 @@ Widget buildPostCard({
                                           ),
                                           const SizedBox(width: 6),
                                           Text(
-                                            comment.date,
+                                            formatDateTime(comment.createdAt,),
                                             style: GoogleFonts.poppins(
                                               fontSize: 11,
                                               color: Colors.grey[600],
@@ -206,7 +195,7 @@ Widget buildPostCard({
                                       ),
                                       const SizedBox(height: 2),
                                       Text(
-                                        comment.text,
+                                        comment.content,
                                         style: GoogleFonts.poppins(
                                           fontSize: 13,
                                           color: Colors.black87,

@@ -36,6 +36,6 @@ class PostModel extends PostEntity {
   }
 
   Map<String, dynamic> toJson() {
-    return {'id': id, 'userId': userId, 'userName': userName, 'content': content,'profileImageUrl': profileImageUrl,'imageUrl':imageUrl, 'createdAt':createdAt,'likeCount':likeCount, 'likedBy':likedBy};
+    return {'id': id, 'userId': userId, 'userName': userName, 'content': content,'profileImageUrl': profileImageUrl,'imageUrl':imageUrl, 'createdAt':createdAt,'likeCount':likeCount, 'likedBy':likedBy,'comments':comments};
   }
 }

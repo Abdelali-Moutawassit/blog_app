@@ -90,50 +90,7 @@ class PostDetailPage extends StatelessWidget {
             userImageUrl: post.profileImageUrl,
             postImageUrl: post.imageUrl,
             postDate: post.createdAt,
-            comments: [
-              Comment(
-                userName: "Alice",
-                userImage:
-                    "https://img.freepik.com/premium-photo/male-russian-model-face-cosmetology-advertising_1198440-111.jpg",
-                text: "Nice pic!",
-                date: "1h ago",
-              ),
-              Comment(
-                userName: "Bob",
-                userImage:
-                    "https://img.freepik.com/premium-photo/male-russian-model-face-cosmetology-advertising_1198440-111.jpg",
-                text: "Love this",
-                date: "30m ago",
-              ),
-              Comment(
-                userName: "Alice",
-                userImage:
-                    "https://img.freepik.com/premium-photo/male-russian-model-face-cosmetology-advertising_1198440-111.jpg",
-                text: "Nice pic!",
-                date: "1h ago",
-              ),
-              Comment(
-                userName: "Bob",
-                userImage:
-                    "https://img.freepik.com/premium-photo/male-russian-model-face-cosmetology-advertising_1198440-111.jpg",
-                text: "Love this",
-                date: "30m ago",
-              ),
-              Comment(
-                userName: "Alice",
-                userImage:
-                    "https://img.freepik.com/premium-photo/male-russian-model-face-cosmetology-advertising_1198440-111.jpg",
-                text: "Nice pic!",
-                date: "1h ago",
-              ),
-              Comment(
-                userName: "Bob",
-                userImage:
-                    "https://img.freepik.com/premium-photo/male-russian-model-face-cosmetology-advertising_1198440-111.jpg",
-                text: "Love this",
-                date: "30m ago",
-              ),
-            ],
+            comments: post.comments,
           ),
         ),
         bottomNavigationBar: SafeArea(
