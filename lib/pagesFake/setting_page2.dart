@@ -14,7 +14,7 @@ class SettingPage extends StatelessWidget {
           SliverAppBar(
             pinned: true,
             expandedHeight: 260,
-            backgroundColor: Color(0xFFF9F9F9),
+            backgroundColor: Color(0xFFF9F9F9).withValues(alpha: 0.6),
             flexibleSpace: FlexibleSpaceBar(
               background: Stack(
                 fit: StackFit.expand,
