@@ -1,11 +1,12 @@
 import 'package:blog_app/features/PostTest/domain/entities/post_entity.dart';
 import 'package:blog_app/features/PostTest/presentation/cubit/reaction_cubit.dart';
+import 'package:blog_app/pagesFake/post_detail_page.dart';
 import 'package:blog_app/utils/functions.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-Widget postWidget(PostEntity post) {
+Widget postWidget(PostEntity post, context) {
   return Container(
     padding: EdgeInsets.all(16),
     decoration: BoxDecoration(
@@ -52,9 +53,19 @@ Widget postWidget(PostEntity post) {
         SizedBox(height: 10),
         Text(post.content),
         SizedBox(height: 10),
-        ClipRRect(
-          borderRadius: BorderRadius.circular(10),
-          child: Image.network(post.profileImageUrl),
+        GestureDetector(
+          onTap: (){
+            Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PostDetailPage(post : post),
+                      ),
+                    );
+          },
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: Image.network(post.profileImageUrl),
+          ),
         ),
         SizedBox(height: 10),
         Row(

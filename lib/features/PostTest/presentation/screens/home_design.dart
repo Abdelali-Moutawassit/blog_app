@@ -161,7 +161,7 @@ class HomeDesign extends StatelessWidget {
                                           ),
                                         ),
                                   ),
-                              child: postWidget(posts[index]),
+                              child: postWidget(posts[index], context),
                             ),
                           );
                         },
