@@ -1,3 +1,4 @@
+import 'package:blog_app/features/PostTest/domain/entities/sub_entities/comment_entity.dart';
 import 'package:blog_app/features/PostTest/domain/entities/sub_entities/user_entity.dart';
 
 class PostEntity {
@@ -10,7 +11,7 @@ class PostEntity {
   final String createdAt;
   final int likeCount;
   final List<UserEntity> likedBy;
-  
+  final List<CommentEntity> comments;
 
   PostEntity({
     required this.id,
@@ -22,5 +23,6 @@ class PostEntity {
     required this.createdAt,
     required this.likeCount,
     required this.likedBy,
+    required this.comments,
   });
 }
