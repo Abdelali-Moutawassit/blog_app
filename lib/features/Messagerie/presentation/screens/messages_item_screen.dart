@@ -35,7 +35,7 @@ class MessagesItemScreen extends StatelessWidget {
               ),
               SizedBox(width: 10),
               Text(
-                "Sophia Hernan",
+                "Sophia Her",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Colors.black,

@@ -12,6 +12,7 @@ import 'package:blog_app/features/Post/presentation/widgets/user_avatars.dart';
 import 'package:blog_app/features/PostTest/presentation/widgets/styled_icon_button.dart';
 import 'package:blog_app/features/Profile/presentation/screens/profile_screen.dart';
 import 'package:blog_app/pagesFake/notification_page.dart';
+import 'package:blog_app/utils/annimations.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -112,9 +113,17 @@ class HomeDesign extends StatelessWidget {
             body: Builder(
               builder: (context) {
                 if (state is PostLoading) {
-                  return Center(child: CircularProgressIndicator());
+                  return Center(
+                    child: SizedBox(
+                      height: 60,
+                      width: 60,
+                      child: loadAnnimation(),
+                    ),
+                  );
                 } else if (state is PostFailure) {
-                  return Center(child: Text((state).message));
+                  return Center(
+                    child: noInternetAnnimation(),
+                  );
                 } else if (state is PostLoaded) {
                   final posts = (state).posts;
                   return ListView(
