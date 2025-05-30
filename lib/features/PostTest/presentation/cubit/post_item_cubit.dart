@@ -14,7 +14,7 @@ part 'post_item_state.dart';
 class PostItemCubit extends Cubit<PostItemState> {
   PostItemCubit() : super(PostItemLoading());
 
-  eitherFailureOrPosts(int id) async {
+  eitherFailureOrPost(int id) async {
     emit(PostItemLoading());
     final failureOrPost =
         await GetPostById(
