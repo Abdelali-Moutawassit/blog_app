@@ -22,6 +22,21 @@ class RemoteDatasource {
     }
   }
 
+  Future<PostModel> getPostsById(int id) async {
+    try {
+      final responseJson = await api.get(EndPointsApi.getPostById(id));
+      if (responseJson == null) {
+        throw Exception("Aucune donnée reçue");
+      }
+
+      final postsJson = responseJson;
+
+      return PostModel.fromJson(postsJson);
+    } catch (error) {
+      throw Exception("Erreur lors de recuperation de posts: $error");
+    }
+  }
+
   Future<void> addReactionToPost({
     required int postId,
     required int userId,

@@ -80,4 +80,22 @@ class PostRepositoryImpl implements PostRepository {
       return Left(Failure(errMessage: 'Pas de connexion Internet'));
     }
   }
+  
+  @override
+  Future<Either<Failure, PostEntity>> getPostsById(int id) async{
+    if (await networkInfo.isConnected!) {
+      try {
+        final post = await remoteDatasource.getPostsById(id);
+        return Right(post);
+      } on ServerException catch (e) {
+        return Left(Failure(errMessage: e.errorModel.errorMessage));
+      } catch (e) {
+        return Left(
+          Failure(errMessage: 'Une erreur inattendue est survenue : $e'),
+        );
+      }
+    } else {
+      return Left(Failure(errMessage: 'Aucune connexion Internet'));
+    }
+  }
 }
