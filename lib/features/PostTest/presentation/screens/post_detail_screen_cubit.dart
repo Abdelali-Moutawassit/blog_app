@@ -12,6 +12,8 @@ import 'package:blog_app/features/PostTest/presentation/widgets/styled_icon_butt
 import 'package:blog_app/features/Profile/presentation/screens/profile_screen.dart';
 import 'package:blog_app/pagesFake/notification_page.dart';
 import 'package:dio/dio.dart';
+import 'package:elegant_notification/elegant_notification.dart';
+import 'package:elegant_notification/resources/stacked_options.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
@@ -124,18 +126,20 @@ class PostDetailScreenCubit extends StatelessWidget {
             body: BlocBuilder<PostItemCubit, PostItemState>(
               builder: (context, state) {
                 if (state is PostItemLoading) {
-                  return Center(child: SizedBox(
+                  return Center(
+                    child: SizedBox(
                       height: 60,
                       width: 60,
                       child: loadAnnimation(),
-                    ),);
+                    ),
+                  );
                 } else if (state is PostItemFailure) {
                   return Center(child: Text(state.message));
                 } else if (state is PostItemLoaded) {
                   final post = state.post;
 
                   return Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(0.0),
                     child: buildPostCard(
                       userName: post.userName,
                       userImageUrl: post.profileImageUrl,
@@ -157,9 +161,23 @@ class PostDetailScreenCubit extends StatelessWidget {
                     // Recharger les données du post après ajout de commentaire
                     context.read<PostItemCubit>().eitherFailureOrPost(postId);
 
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text("Commentaire ajouté !")),
-                    );
+                    ElegantNotification.success(
+                      width: 360,
+                      isDismissable: false,
+                      stackedOptions: StackedOptions(
+                        key: 'top',
+                        type: StackedType.same,
+                        itemOffset: const Offset(-5, -5),
+                      ),
+                      title: const Text('Add'),
+                      description: const Text('Your comment has been added'),
+                      onDismiss: () {
+                        //Message when the notification is dismissed
+                      },
+                      onNotificationPressed: () {
+                        //Message when the notification is pressed
+                      },
+                    ).show(context);
                   } else if (state is AddCommentFailure) {
                     ScaffoldMessenger.of(
                       context,

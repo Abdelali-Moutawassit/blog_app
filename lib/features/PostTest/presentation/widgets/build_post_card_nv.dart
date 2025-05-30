@@ -16,14 +16,14 @@ Widget buildPostCard({
   List<CommentEntity>? comments,
 }) {
   return SizedBox(
-    height: 580,
+    // height: 580,
     child: Card(
       color: Colors.white,
-      margin: const EdgeInsets.symmetric(vertical: 10),
+      // margin: const EdgeInsets.symmetric(vertical: 10),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      elevation: 2,
+      // elevation: 2,
       child: Padding(
-        padding: const EdgeInsets.all(12),
+        padding: const EdgeInsets.all(8),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
