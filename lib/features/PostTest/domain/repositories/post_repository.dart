@@ -4,6 +4,7 @@ import 'package:dartz/dartz.dart';
 
 abstract class PostRepository {
   Future<Either<Failure, List<PostEntity>>> getPosts();
+  Future<Either<Failure, PostEntity>> getPostsById(int id);
   Future<Either<Failure, Unit>> addReactionToPost({
     required int postId,
     required int userId,

@@ -54,13 +54,13 @@ Widget postWidget(PostEntity post, context) {
         Text(post.content),
         SizedBox(height: 10),
         GestureDetector(
-          onTap: (){
+          onTap: () {
             Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => PostDetailScreen(post : post),
-                      ),
-                    );
+              context,
+              MaterialPageRoute(
+                builder: (context) => PostDetailScreen(post: post),
+              ),
+            );
           },
           child: ClipRRect(
             borderRadius: BorderRadius.circular(10),
